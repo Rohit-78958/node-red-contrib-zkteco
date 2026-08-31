@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('zkteco-connect', {
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            config: { type: "zkteco-config", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-link",
+        label: function () {
+            return this.name || "zkteco connect";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="zkteco-connect">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-server"></i> Device</label>
+        <input type="text" id="node-input-config">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="zkteco-connect">
+    <p>Explicitly connects to the configured ZKTeco device.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">any</span></dt>
+        <dd>Any incoming message will trigger the connection attempt.</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Outputs <code>{ connected: true }</code> upon success.</dd>
+    </dl>
+</script>

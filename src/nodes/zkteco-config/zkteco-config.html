@@ -1,0 +1,69 @@
+<script type="text/javascript">
+    RED.nodes.registerType('zkteco-config', {
+        category: 'config',
+        defaults: {
+            name: { value: "" },
+            host: { value: "192.168.1.201", required: true },
+            port: { value: 4370, required: true, validate: RED.validators.number() },
+            protocol: { value: "tcp", required: true },
+            timeout: { value: 10000, required: true, validate: RED.validators.number() }
+        },
+        credentials: {
+            password: { type: "password" }
+        },
+        label: function () {
+            return this.name || this.host || "zkteco config";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="zkteco-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Device Name (e.g. Front Door)">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> IP Address</label>
+        <input type="text" id="node-config-input-host" placeholder="192.168.1.201">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-port"><i class="fa fa-plug"></i> Port</label>
+        <input type="number" id="node-config-input-port" placeholder="4370">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-protocol"><i class="fa fa-exchange"></i> Protocol</label>
+        <select id="node-config-input-protocol">
+            <option value="tcp">TCP</option>
+            <option value="udp">UDP</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-timeout"><i class="fa fa-clock-o"></i> Timeout (ms)</label>
+        <input type="number" id="node-config-input-timeout" placeholder="10000">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="fa fa-lock"></i> Comm Password</label>
+        <input type="password" id="node-config-input-password" placeholder="Leave blank if none">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="zkteco-config">
+    <p>A configuration node that holds the connection details for a ZKTeco biometric device.</p>
+    <h3>Configuration</h3>
+    <dl class="message-properties">
+        <dt>IP Address <span class="property-type">string</span></dt>
+        <dd>The IP address of the ZKTeco device on your local network.</dd>
+        
+        <dt>Port <span class="property-type">number</span></dt>
+        <dd>The communication port. Usually 4370.</dd>
+        
+        <dt>Protocol <span class="property-type">string</span></dt>
+        <dd>TCP is recommended for reliability. UDP is supported by some older devices.</dd>
+
+        <dt>Timeout <span class="property-type">number</span></dt>
+        <dd>How long to wait (in milliseconds) before aborting a connection attempt or operation.</dd>
+        
+        <dt>Comm Password <span class="property-type">string</span></dt>
+        <dd>The communication password set on the device. Leave blank if none is set. This is stored securely by Node-RED.</dd>
+    </dl>
+</script>

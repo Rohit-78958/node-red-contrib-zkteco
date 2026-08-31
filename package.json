@@ -16,7 +16,11 @@
   ],
   "node-red": {
     "nodes": {
-      "zkteco-hello": "dist/nodes/zkteco-hello/zkteco-hello.js"
+      "zkteco-hello": "dist/nodes/zkteco-hello/zkteco-hello.js",
+      "zkteco-config": "dist/nodes/zkteco-config/zkteco-config.js",
+      "zkteco-connect": "dist/nodes/zkteco-connect/zkteco-connect.js",
+      "zkteco-disconnect": "dist/nodes/zkteco-disconnect/zkteco-disconnect.js",
+      "zkteco-operation": "dist/nodes/zkteco-operation/zkteco-operation.js"
     }
   },
   "author": "Rohit",

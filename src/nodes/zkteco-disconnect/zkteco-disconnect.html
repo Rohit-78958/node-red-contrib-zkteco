@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('zkteco-disconnect', {
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            config: { type: "zkteco-config", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "font-awesome/fa-chain-broken",
+        label: function () {
+            return this.name || "zkteco disconnect";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="zkteco-disconnect">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-server"></i> Device</label>
+        <input type="text" id="node-input-config">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="zkteco-disconnect">
+    <p>Explicitly disconnects from the configured ZKTeco device.</p>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Outputs <code>{ connected: false }</code> upon successful disconnection.</dd>
+    </dl>
+</script>
