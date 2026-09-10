@@ -1,5 +1,5 @@
 import { ZktecoClient } from "../adapters/zkteco-client.interface";
-import { MockZktecoClient } from "../adapters/mock-zkteco-client";
+import { RealZktecoClient } from "../adapters/real-zkteco-client";
 
 export class ConnectionManager {
     // Map to hold unique connections by their IP/host
@@ -19,9 +19,8 @@ export class ConnectionManager {
             return this.connections.get(key)!;
         }
 
-        // For Phase 3, we are hardcoding the Mock client.
-        // In later phases, we will instantiate the real RealZktecoClient here.
-        const client = new MockZktecoClient(host, port, timeout);
+        // We are now instantiating the real ZKTeco client
+        const client = new RealZktecoClient(host, port, timeout);
         
         await client.connect();
         this.connections.set(key, client);

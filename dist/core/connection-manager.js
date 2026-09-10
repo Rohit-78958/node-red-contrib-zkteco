@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConnectionManager = void 0;
-const mock_zkteco_client_1 = require("../adapters/mock-zkteco-client");
+const real_zkteco_client_1 = require("../adapters/real-zkteco-client");
 class ConnectionManager {
     // Map to hold unique connections by their IP/host
     static connections = new Map();
@@ -13,9 +13,8 @@ class ConnectionManager {
         if (this.connections.has(key)) {
             return this.connections.get(key);
         }
-        // For Phase 3, we are hardcoding the Mock client.
-        // In later phases, we will instantiate the real RealZktecoClient here.
-        const client = new mock_zkteco_client_1.MockZktecoClient(host, port, timeout);
+        // We are now instantiating the real ZKTeco client
+        const client = new real_zkteco_client_1.RealZktecoClient(host, port, timeout);
         await client.connect();
         this.connections.set(key, client);
         return client;

@@ -6,13 +6,19 @@
   "scripts": {
     "build": "tsc && npm run copy-html",
     "copy-html": "node scripts/copy-html.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run"
   },
   "keywords": [
     "node-red",
     "zkteco",
     "biometric",
     "attendance"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist"
   ],
   "node-red": {
     "nodes": {
@@ -29,8 +35,10 @@
     "node-zklib": "^1.3.0"
   },
   "devDependencies": {
-    "@types/node": "^18.19.0",
+    "@types/node": "^20.19.0",
     "@types/node-red": "^1.3.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
   }
 }
